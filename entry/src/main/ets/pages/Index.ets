@@ -1,3 +1,4 @@
+import router from '@ohos.router'
 @Entry
 @Component
 struct Index {
@@ -19,10 +20,9 @@ struct Index {
             .height(40)
             .width(260)
             .fontSize(18)
-            .fontFamily("sans-serif")
-            .fontStyle(FontStyle.Normal)
             .fontColor(0xff000000)
             .onChange((value: string) => {
+              console.info(value)
             })
         }.alignItems(VerticalAlign.Center).margin({top:60})
         Text('').height(.5).width(295).backgroundColor(0xFF999999)
@@ -46,9 +46,12 @@ struct Index {
         }.margin({top: 50}).alignItems(VerticalAlign.Top)
         Button('获取短信验证码').width(295).height(44).borderRadius(22).backgroundColor(0xffff4080).margin({top:20}).onClick(()=>{
           console.info('获取短信验证码')
+          router.pushUrl({ url:'pages/Mine'})
         })
         Row(){
-          Text('密码登录').fontColor(0xFF666666).fontSize(13)
+          Text('密码登录').fontColor(0xFF666666).fontSize(13).onClick(()=>{
+            AlertDialog.show({message:'密码登录'})
+          })
         }.margin({top:20}).justifyContent(FlexAlign.End).width('90%')
         Row(){Image($r('app.media.icon_wechat')).margin({top:70}).width(70).borderRadius(30)}.justifyContent(FlexAlign.Center).width('100%')
       }.margin({left:24}).alignItems(HorizontalAlign.Start)
