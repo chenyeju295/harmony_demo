@@ -1,13 +1,10 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World 啊打；开始；看； 阿卡打开；打开'
 
   build() {
     Column(){
-
-      Row().height(25)
-      Image($r('app.media.left_arrow')).width(30).height(30)
+      Image($r('app.media.left_arrow')).width(30).height(30).margin({top:25})
       Column() {
         Text('欢迎登录数美链')
           .fontSize(28).margin({top:50})
@@ -17,8 +14,10 @@ struct Index {
           Text('').height(14).width(.5).margin({left:14}).backgroundColor(0xFF999999)
           TextInput({ placeholder: '请输入手机号', })
             .caretColor(0xffff4080)
+            .type(InputType.PhoneNumber)
             .backgroundColor(0x00ffffff)
             .height(40)
+            .width(260)
             .fontSize(18)
             .fontFamily("sans-serif")
             .fontStyle(FontStyle.Normal)
@@ -35,7 +34,15 @@ struct Index {
             .onChange((value: boolean) => {
               console.info('Checkbox1 change is'+ value)
             }).width(16).margin({right:4})
-          Text('我已阅读并同意《用户协议》、《隐私政策》，并授权数美链使用该数美链账号信息（如昵称、头像）进行统一管理。').fontColor(0xFF999999).width(273).fontSize(12)
+          Text(){
+            Span('我已阅读并同意')
+            Span('《用户协议》').fontColor(0xffff4080).fontSize(12).onClick(()=>{
+              console.info('获取用户协议')})
+            Span('、')
+            Span('《隐私政策》').fontColor(0xffff4080).fontSize(12).onClick(()=>{
+              console.info('获取隐私政策')})
+            Span('，并授权数美链使用该数美链账号信息（如昵称、头像）进行统一管理。')
+          }.fontColor(0xFF999999).width(273).fontSize(12)
         }.margin({top: 50}).alignItems(VerticalAlign.Top)
         Button('获取短信验证码').width(295).height(44).borderRadius(22).backgroundColor(0xffff4080).margin({top:20}).onClick(()=>{
           console.info('获取短信验证码')
@@ -43,7 +50,7 @@ struct Index {
         Row(){
           Text('密码登录').fontColor(0xFF666666).fontSize(13)
         }.margin({top:20}).justifyContent(FlexAlign.End).width('90%')
-        Row(){Image($r('app.media.app_icon')).margin({top:60}).width(60).borderRadius(30)}.justifyContent(FlexAlign.Center).width('100%')
+        Row(){Image($r('app.media.icon_wechat')).margin({top:70}).width(70).borderRadius(30)}.justifyContent(FlexAlign.Center).width('100%')
       }.margin({left:24}).alignItems(HorizontalAlign.Start)
   }.height('100%').padding(16).alignItems(HorizontalAlign.Start)}
 }
