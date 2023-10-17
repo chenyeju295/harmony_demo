@@ -1,8 +1,9 @@
-@Entry
+
 @Component
-struct Mine
-{
+export struct Mine {
   build() {
-    Text('我的页面')
+    Column(){
+      Text('我的页面')
+      Text('我的页面')}
   }
 }

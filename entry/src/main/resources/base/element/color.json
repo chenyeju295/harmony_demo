@@ -3,6 +3,10 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "train_background",
+      "value": "#FFF1F3F5"
     }
   ]
 }

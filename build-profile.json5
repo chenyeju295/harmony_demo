@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/mac/.ohos/config/auto_debug_MyApplication_com.example.myapplication_30086000728604969.cer",
+          "storePassword": "0000001BEAD3A59605468EC17842BA738743705BECC117111BB1F9074EBF7BCEA2E0A6E6203AEC6AC337A8",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B290808983D949DAA35C0F9A982A562CB6BD9CE9B8AD3A48E5346BB6D67E17CD068360834229C4B",
+          "profile": "/Users/mac/.ohos/config/auto_debug_MyApplication_com.example.myapplication_30086000728604969.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/mac/.ohos/config/auto_debug_MyApplication_com.example.myapplication_30086000728604969.p12"
+        }
+      }
+    ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [

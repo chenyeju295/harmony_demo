@@ -1,11 +1,12 @@
 import router from '@ohos.router'
 @Entry
 @Component
-struct Index {
-
+struct Login {
   build() {
     Column(){
-      Image($r('app.media.left_arrow')).width(30).height(30).margin({top:25})
+      Image($r('app.media.left_arrow')).width(30).height(30).margin({top:25}).onClick(()=>{
+        router.back()
+      })
       Column() {
         Text('欢迎登录数美链')
           .fontSize(28).margin({top:50})
@@ -46,7 +47,7 @@ struct Index {
         }.margin({top: 50}).alignItems(VerticalAlign.Top)
         Button('获取短信验证码').width(295).height(44).borderRadius(22).backgroundColor(0xffff4080).margin({top:20}).onClick(()=>{
           console.info('获取短信验证码')
-          router.pushUrl({ url:'pages/Mine'})
+          router.pushUrl({ url:'pages/Page'})
         })
         Row(){
           Text('密码登录').fontColor(0xFF666666).fontSize(13).onClick(()=>{
