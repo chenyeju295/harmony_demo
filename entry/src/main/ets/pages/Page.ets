@@ -1,4 +1,6 @@
 
+import { Home } from './Home';
+
 import { Mine } from './Mine';
 @Entry
 @Component
@@ -28,7 +30,7 @@ struct Page {
       Tabs({ barPosition: BarPosition.End,index: 2, controller: this.controller }) {
 
         TabContent() {
-          Text('首页')
+ Home()
         }.tabBar(this.TabBuilder(0,'首页'))
         TabContent() {
           Text('我的页面')
