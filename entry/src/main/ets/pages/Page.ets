@@ -1,55 +1,61 @@
-
+import { BottomTabsList } from '../model/BottomTabsModel';
 import { Home } from './Home';
 
 import { Mine } from './Mine';
+
 @Entry
 @Component
 struct Page {
-
   @State fontColor: string = '#182431'
   @State selectedFontColor: string = '#007DFF'
-  @State currentIndex: number = 0
+  @State @Watch('onIndexChange') bottomTabIndex: number = 1;
   private controller: TabsController = new TabsController();
-  @Builder TabBuilder(index: number,tag: string) {
+
+  @Builder TabBuilder(index: number) {
     Column() {
-      Image($r('app.media.icon'))
+      Image(this.bottomTabIndex === index ? BottomTabsList[index].iconSelected : BottomTabsList[index].icon)
         .width(24)
         .height(24)
         .margin({ bottom: 4 })
         .objectFit(ImageFit.Contain)
-      Text(tag)
-        .fontColor(this.currentIndex === index ? this.selectedFontColor : this.fontColor)
+      Text(BottomTabsList[index].text)
+        .fontColor(this.bottomTabIndex === index ? this.selectedFontColor : this.fontColor)
         .fontSize(10)
         .fontWeight(500)
         .lineHeight(14)
     }.width('100%')
   }
 
+  onIndexChange() {
+    this.controller.changeIndex(this.bottomTabIndex);
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.End, justifyContent: FlexAlign.End }) {
-      Tabs({ barPosition: BarPosition.End,index: 2, controller: this.controller }) {
+      Tabs({ barPosition: BarPosition.End, index: 2, controller: this.controller }) {
 
         TabContent() {
- Home()
-        }.tabBar(this.TabBuilder(0,'首页'))
+          Home()
+        }.tabBar(this.TabBuilder(0))
+
         TabContent() {
           Text('我的页面')
-        }.tabBar(this.TabBuilder(1,'首页'))
+        }.tabBar(this.TabBuilder(1))
+
         TabContent() {
           Mine()
-        }.tabBar(this.TabBuilder(2,'我的页面'))
+        }.tabBar(this.TabBuilder(2))
       }
       .vertical(false)
       .barHeight(56)
       .width('100%')
       .height('100%')
       .onChange((index: number) => {
-        this.currentIndex = index
+        this.bottomTabIndex = index;
       })
     }.width('100%')
 
   }
-
 }
 
 
